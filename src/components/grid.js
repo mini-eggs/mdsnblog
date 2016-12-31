@@ -5,7 +5,6 @@ import Image from './image'
 const Item = props => {
 
   const item = props.item
-  console.log(item)
   const image = 'https://' + item.image.fields.file.url
 
   return (
@@ -19,26 +18,47 @@ const Item = props => {
 
 const Grid = props => {
 
-  const items = props.items.concat(props.items).concat(props.items).concat(props.items).concat(props.items).concat(props.items).concat(props.items).concat(props.items).concat(props.items).concat(props.items)
+  const items = props.items
 
-  const fg = items.filter( (item, index) => index % 4 === 0 )
-  items.shift()
-  const sg = items.filter( (item, index) => index % 4 === 0 )
-  items.shift()
-  const tg = items.filter( (item, index) => index % 4 === 0 )
-  items.shift()
-  const fg2 = items.filter( (item, index) => index % 4 === 0 )
+  const helpers = Array(5).fill().map( (item, index) => index + 1 )
 
-  const largeGroups = [ fg, sg, tg, fg2 ]
+  const sizesClasses = [
+    'ea--grid--small--group',
+    'ea--grid--medium--group',
+    'ea--grid--large--group',
+    'ea--grid--xlarge--group',
+    'ea--grid--xxlarge--group'
+  ]
+
+  const sizes = helpers.map( (item, index) => {
+    let arr = []
+    for(let e = 0; e < (index + 1); e++) {
+      arr.push( items.slice( items.length/item * e, items.length/item * (e + 1) ) )
+    }
+    arr = arr.sort((a, b) => b.length - a.length)
+    return { class: sizesClasses[index], arr: arr }
+  })
 
   return (
     <div id="ea--grid--container" className="ea--grid--container">
       {
-        largeGroups.map( (group, index) => {
+        sizes.map( (size, index) => {
           return (
-            <div key={index} className="ea--grid--large--group">
+            <div key={index}>
               {
-                group.map( (item, index) => <Item key={index} item={item} /> )
+                size.arr.map( (arr, index) => {
+                  return (
+                    <div key={index} className={size.class}>
+                      {
+                        arr.map( (a, index) => {
+                          return (
+                            <Item key={index} item={a} />
+                          )
+                        })
+                      }
+                    </div>
+                  )
+                })
               }
             </div>
           )

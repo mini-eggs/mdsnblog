@@ -1,42 +1,65 @@
 import React from 'react'
-import { getItemByCategory } from '../scripts/contentful'
+import { getItemByCategoryPaginated } from '../scripts/contentful'
 import Grid from './grid'
+import Loader from './loader'
 
 class Home extends React.Component {
 
   constructor(props) {
     super(props)
     this.state = {
-      items:[]
+      items: [],
+      loading: true,
+      page: 0,
+      size: 10
     }
+  }
+
+  componentDidMount() {
+    this.getItems()
+    const el = document.getElementById('ea--page--home--scroll')
+    el.addEventListener('scroll', e => { this.handleScroll(e) })
   }
 
   componentWillReceiveProps(props) {
     this.setState({ items: [] }, () => { this.getItems() })
   }
 
-  componentDidMount() {
-    this.getItems()
+  componentWillUnmount() {
+    const el = document.getElementById('ea--page--home--scroll')
+    el.removeEventListener('scroll', e => { this.handleScroll(e) })
+  }
+
+  handleScroll(e) {
+    if( (e.srcElement.scrollTop > (e.srcElement.scrollHeight - e.srcElement.offsetHeight) - window.innerHeight/2 ) && !this.state.loading ) {
+      this.setState({ loading: true }, () => { this.getItems() })
+    }
   }
 
   async getItems() {
     try {
-      const items = await getItemByCategory({ category: 'blogPost' })
-      console.log(items)
-      this.setState({ items: items }, () => { this.gridLoaded() })
+      const items = await getItemByCategoryPaginated({ category: 'blogPost', page: this.state.page, size: this.state.size })
+      this.setState({ items: this.state.items.concat(items), loading: false, page: (this.state.page + 1) }, () => { this.getItemsComplete() })
     }
     catch(err) {
       console.log(err)
     }
   }
 
-  gridLoaded() {
+  getItemsComplete() {
+    const el = document.getElementById('ea--page--home--scroll')
+    // if(!el.innerHeight) {}
+    if(!(el.scrollHeight > window.innerHeight)) {
+      this.getItems()
+    }
   }
 
   render() {
     return (
-      <div className="ea--page--home">
-        <Grid items={this.state.items} />
+      <div id="ea--page--home--scroll" className="ea--page--home ea--height--full ea--scroll-vertical">
+        {
+          this.state.items.length > 0 ? <Grid items={this.state.items} /> : <Loader/>
+        }
       </div>
     )
   }

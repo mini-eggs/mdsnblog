@@ -2,6 +2,7 @@ import React from 'react'
 import { browserHistory } from 'react-router'
 import { getItemByCategoryAndSlug } from '../scripts/contentful'
 import Image from './image'
+import Loader from './loader'
 
 const PageItem = props => {
 
@@ -50,12 +51,10 @@ class Page extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="ea--height--full">
         {
           !this.state.page ?
-            <div>
-              loading
-            </div>
+            <Loader/>
             :
             <PageItem page={this.state.page} />
         }

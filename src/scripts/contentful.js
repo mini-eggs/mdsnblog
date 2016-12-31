@@ -3,6 +3,33 @@ import credentials from '../keys/contentful'
 
 const client = contentful.createClient(credentials)
 
+const getItemByCategoryPaginated = async props => {
+  let items = []
+  return new Promise( async (resolve, reject) => {
+    const entries = await client.getEntries()
+    entries.toPlainObject().items.forEach( item => {
+      const id = item.sys.contentType.sys.id
+      if(id === props.category) {
+        items.push(item.fields)
+      }
+    })
+    items = items.concat(items).concat(items).concat(items).concat(items)
+    items = items.concat(items).concat(items).concat(items).concat(items)
+    items = items.concat(items).concat(items).concat(items).concat(items)
+    items = items.concat(items).concat(items).concat(items).concat(items)
+    items = items.concat(items).concat(items).concat(items).concat(items)
+    items = items.concat(items).concat(items).concat(items).concat(items)
+    items = items.slice( props.page * props.size, (props.page + 1) * props.size )
+    if(items.length > 0) {
+      resolve(items)
+    }
+    else {
+      reject()
+    }
+  })
+}
+export {getItemByCategoryPaginated}
+
 const getItemByCategoryAndSlug = async props => {
   return new Promise( async (resolve, reject) => {
     const entries = await client.getEntries()

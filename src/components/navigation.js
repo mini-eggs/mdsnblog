@@ -1,5 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router'
+import BlogDescription from './blogDescription'
+import BlogLinks from './blogLinks'
 
 class Navigation extends React.Component {
 
@@ -38,17 +40,25 @@ class Navigation extends React.Component {
       <div className="ea--inline">
 
         <div id="ea--slide--out--menu--spoof--page" className="ea--slide--out--menu--spoof--page" onClick={ () => { this.closeNavigation() }} />
-
-        <div id="ea--slide--out--navigation" className="ea--slide--out--menu--container">
-          <div className="ea--close--icon--container">
-            <div className="ea--inline ea--menu--icon--close--inner " onClick={ () => { this.closeNavigation() }}>
-              <div className="ea--menu--icon--close" />
+          <div id="ea--slide--out--navigation" className="ea--slide--out--menu--container ea--direction--rtl">
+            <div className="ea--direction--ltr">
+            <div className="ea--close--icon--container">
+              <div className="ea--inline ea--menu--icon--close--inner " onClick={ () => { this.closeNavigation() }}>
+                <div className="ea--menu--icon--close" />
+              </div>
             </div>
-          </div>
-          <div className="ea--slide--out--menu">
-            <div>Things will go here</div>
-            <div>
-              <Link to="/" onClick={ () => { this.closeNavigation() }}>home</Link>
+            <div className="ea--slide--out--menu">
+              <BlogDescription/>
+              <BlogLinks/>
+              {
+                Array(99).fill(1).map( (e,i) => {
+                  return (
+                    <div key={i}>
+                      <Link to="/" onClick={ () => { this.closeNavigation() }}>home</Link>
+                    </div>
+                  )
+                })
+              }
             </div>
           </div>
         </div>
