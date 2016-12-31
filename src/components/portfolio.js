@@ -4,7 +4,7 @@ import { getItemByCategoryPaginated } from '../scripts/contentful'
 import Grid from './grid'
 import Loader from './loader'
 
-class Home extends React.Component {
+class Portfolio extends React.Component {
 
   constructor(props) {
     super(props)
@@ -60,7 +60,7 @@ class Home extends React.Component {
       <div id="ea--page--home--scroll" className="ea--page--home ea--height--full ea--scroll-vertical">
         <div className="ea--mobile--top--fix ea--height--full">
           {
-            this.state.items.length > 0 ? <Link to="/blog" className="ea--page--type--header">Blog</Link> : <span/>
+            this.state.items.length > 0 ? <Link to="/portfolio" className="ea--page--type--header">Portfolio</Link> : <span/>
           }
           {
             this.state.items.length > 0 ? <Grid items={this.state.items} /> : <Loader/>
@@ -72,4 +72,4 @@ class Home extends React.Component {
 
 }
 
-export default Home
+export default Portfolio

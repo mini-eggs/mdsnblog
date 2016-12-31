@@ -26,12 +26,12 @@ class BlogDescription extends React.Component {
 
   render() {
     return (
-      <div className="ej--website--data--container">
+      <div className="ea--website--data--container">
         {
           this.state.data ?
-            <div className="ej--website--data">
-              <h2 className="ej--website--data--title">{this.state.data.title}</h2>
-              <p className="ej--website--data--description">{this.state.data.description}</p>
+            <div className="ea--website--data">
+              <h2 className="ea--website--data--title">{this.state.data.title}</h2>
+              <p className="ea--website--data--description">{this.state.data.description}</p>
             </div>
             :
             <span/>

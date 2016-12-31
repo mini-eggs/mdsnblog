@@ -19,12 +19,16 @@ class Image extends React.Component {
   render() {
 
     const attr = {}
+    let wrapperClass = 'ea--full--width'
     if(this.state.zoom) {
       attr['data-action'] = 'zoom'
     }
+    else {
+      wrapperClass = 'ea--full--width ea--image--tint'
+    }
 
     return (
-      <div className="ea--full--width">
+      <div className={wrapperClass}>
         {
           !this.state.hasLoaded ?
             <div className="ea--off--screen">

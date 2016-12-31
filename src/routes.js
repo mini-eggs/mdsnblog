@@ -1,14 +1,17 @@
 import React from 'react'
-import { Router, Route, IndexRoute, IndexRedirect, browserHistory } from 'react-router'
+import { Router, Route, IndexRedirect, browserHistory } from 'react-router'
 import Container from './components/container'
 import Home from './components/home'
 import Page from './components/page'
+import Portfolio from './components/portfolio'
 
 const Routes = props => {
   return (
     <Router history={browserHistory}>
       <Route path="/" component={Container}>
-        <IndexRoute component={Home} />
+        <IndexRedirect to="/blog" />
+        <Route path="/blog" component={Home} />
+        <Route path="/portfolio" component={Portfolio} />
         <Route path="/:page" component={Page} />
       </Route>
       <Route path="*">

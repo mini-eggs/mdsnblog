@@ -1,12 +1,19 @@
 import React from 'react'
+import { Link } from 'react-router'
 import { getItemByCategory } from '../scripts/contentful'
 
+const CustomNavLink = props => {
+  const item = props.item
+  return (
+    <Link to={item.link} className="ea--menu--button--link" onClick={() => { props.onClick() }} >
+      {item.name}
+    </Link>
+  )
+}
 const CustomSocialLink = props => {
   const item = props.item
-  // const image = 'https://' + item.image.fields.file.url
-
   return (
-    <a href={item.link} className="ea--menu--button--link">
+    <a href={item.link} className="ea--menu--button--link" onClick={() => { props.onClick() }} >
       {item.name}
     </a>
   )
@@ -17,7 +24,9 @@ class BlogLinks extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      social: []
+      social: [],
+      navigation: [],
+      onClick: props.onClick
     }
   }
 
@@ -27,8 +36,11 @@ class BlogLinks extends React.Component {
 
   async getSocialLinks() {
     try {
-      const socialLinks = await getItemByCategory({ category: 'socialLinks' })
-      this.setState({ social: socialLinks })
+      const socialLinksAwait = getItemByCategory({ category: 'socialLinks' })
+      const navigationLinksAwait = getItemByCategory({ category: 'navigationLinks' })
+      const socialLinks = await socialLinksAwait
+      const navigationLinks = await navigationLinksAwait
+      this.setState({ social: socialLinks, navigation: navigationLinks })
     }
     catch(err) {
       console.log(err)
@@ -38,9 +50,18 @@ class BlogLinks extends React.Component {
   render() {
     return (
       <div>
-        {
-          this.state.social.map( (item, index) => <CustomSocialLink key={index} item={item} /> )
-        }
+        <div className="ea--links--container">
+          <h2 className="ea--website--data--title">Navigation</h2>
+          {
+            this.state.navigation.map( (item, index) => <CustomNavLink onClick={() => { this.state.onClick() }} key={index} item={item} /> )
+          }
+        </div>
+        <div className="ea--links--container">
+          <h2 className="ea--website--data--title">Links</h2>
+          {
+            this.state.social.map( (item, index) => <CustomSocialLink onClick={() => { this.state.onClick() }} key={index} item={item} /> )
+          }
+        </div>
       </div>
     )
   }

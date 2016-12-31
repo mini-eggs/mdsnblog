@@ -17,4 +17,7 @@
     height: -o-calc(100% - 83px);
     height: calc(100% - 83px);
   }
+  .ea--page--type--header {
+    font-size: 32px;
+  }
 }

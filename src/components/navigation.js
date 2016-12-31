@@ -64,7 +64,7 @@ class Navigation extends React.Component {
             </div>
             <div className="ea--slide--out--menu">
               <BlogDescription/>
-              <BlogLinks/>
+              <BlogLinks onClick={ () => { this.closeNavigation() }} />
             </div>
           </div>
         </div>
