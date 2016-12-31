@@ -22,7 +22,7 @@ class Home extends React.Component {
   }
 
   componentWillReceiveProps(props) {
-    this.setState({ items: [] }, () => { this.getItems() })
+    this.setState({ items: [], loading: true, page: 0 }, () => { this.getItems() })
   }
 
   componentWillUnmount() {
@@ -31,7 +31,7 @@ class Home extends React.Component {
   }
 
   handleScroll(e) {
-    if( (e.srcElement.scrollTop > (e.srcElement.scrollHeight - e.srcElement.offsetHeight) - window.innerHeight/2 ) && !this.state.loading ) {
+    if( (e.target.scrollTop > (e.target.scrollHeight - e.target.offsetHeight) - window.innerHeight/2 ) && !this.state.loading ) {
       this.setState({ loading: true }, () => { this.getItems() })
     }
   }

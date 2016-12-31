@@ -30,6 +30,15 @@ article {
 }
 .ea--page--home {
 }
+.ea--text--left {
+  text-align: left
+}
+.ea--text--right {
+  text-align: right
+}
+.ea--text--center {
+  text-align: center
+}
 .ea--float--left{
   float: left;
 }
@@ -55,6 +64,7 @@ article {
   font-size:30px;
   letter-spacing: 4px;
   width: 100%;
+  color: #fff;
 }
 .ea--menu--icon {
   background-color: #fff;
@@ -81,13 +91,34 @@ article {
   cursor: pointer;
   margin-top: 25px;
 }
-.ea-menu-container {
+.ea--mobile--menu--icon--container {
+  margin-top:-25px;
+}
+.ea--mobile--menu--container {
+  display: none;
+  background-color: #000;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left:0;
+  z-index: 999;
+}
+.ea--mobile--menu {
+  padding: 25px;
+}
+.ea--menu--container {
   width:100px;
   color: #fff;
   background-color: #000;
   height: 100vh;
   text-align: center;
   position: relative;
+}
+.ea--brand--name--mobile {
+  margin-left:-50px;
+  display: inline-block;
+  width: auto;
+  right: 25px;
 }
 .ea--absolute {
   position: absolute;
@@ -325,7 +356,9 @@ article {
   animation: ea--loader--spin infinite 750ms linear;
   width: 25px;
 }
-
+.ea--page--link {
+  display: block;
+}
 
 
 

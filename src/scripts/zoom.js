@@ -7,6 +7,13 @@ zoom.OFFSET = 80;
 zoom.initialScrollPos = -1;
 zoom.initialTouchPos = -1;
 
+var ZoomImage = function(img) {
+  this.img = img;
+  this.preservedTransform = img.style.transform;
+  this.wrap = null;
+  this.overlay = null;
+};
+
 var windowWidth = function() {
   return document.documentElement.clientWidth;
 }
@@ -62,7 +69,7 @@ zoom.prepareZoom = function(e) {
 };
 
 zoom.closeCurrent = function(force) {
-  if(zoom.current == null) {
+  if(zoom.current === null) {
     return;
   }
   if(force) {
@@ -89,7 +96,7 @@ zoom.removeCloseListeners = function() {
 };
 
 zoom.handleScroll = function() {
-  if(zoom.initialScrollPos == -1) {
+  if(zoom.initialScrollPos === -1) {
     zoom.initialScrollPos = window.pageYOffset;
   }
 
@@ -100,14 +107,14 @@ zoom.handleScroll = function() {
 };
 
 zoom.handleKeyup = function(e) {
-  if(e.keyCode == 27) {
+  if(e.keyCode === 27) {
     zoom.closeCurrent();
   }
 };
 
 zoom.handleTouchStart = function(e) {
   var t = e.touches[0];
-  if(t == null) {
+  if(t === null) {
     return;
   }
 
@@ -117,7 +124,7 @@ zoom.handleTouchStart = function(e) {
 
 zoom.handleTouchMove = function(e) {
   var t = e.touches[0];
-  if(t == null) {
+  if(t === null) {
     return;
   }
 
@@ -134,13 +141,6 @@ zoom.handleClick = function() {
 var Size = function(w, h) {
   this.w = w;
   this.h = h;
-};
-
-var ZoomImage = function(img) {
-  this.img = img;
-  this.preservedTransform = img.style.transform;
-  this.wrap = null;
-  this.overlay = null;
 };
 
 ZoomImage.prototype.forceRepaint = function() {
@@ -173,7 +173,7 @@ ZoomImage.prototype.zoom = function() {
 };
 
 ZoomImage.prototype.calculateScale = function(size) {
-  var scrollTop = window.pageYOffset;
+  // var scrollTop = window.pageYOffset;
   var maxScaleFactor = size.w / this.img.width;
 
   var viewportWidth = (windowWidth() - zoom.OFFSET);
@@ -212,7 +212,7 @@ ZoomImage.prototype.animate = function(scale) {
 };
 
 ZoomImage.prototype.dispose = function() {
-  if(this.wrap == null || this.wrap.parentNode == null) {
+  if(this.wrap === null || this.wrap.parentNode === null) {
     return;
   }
   this.img.classList.remove("zoom-img");

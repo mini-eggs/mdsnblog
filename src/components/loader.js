@@ -4,7 +4,7 @@ const Loader = props => {
   return (
     <div className="ea--loader">
       <div className="ea--loading--vertical--align">
-        <img className="ea--loader--svg" src='/loader.svg' />
+        <img role="presentation" className="ea--loader--svg" src='/loader.svg' />
       </div>
     </div>
   )

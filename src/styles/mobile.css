@@ -1,2 +1,14 @@
 @media(max-width:748px) {
+  .ea--menu--container {
+    display: none;
+  }
+  .ea--mobile--menu--container {
+    display: block;
+  }
+  .ea--fill--calc--100 {
+    width:100%;
+  }
+  .ea--page--home {
+    margin-top:83px;
+  }
 }

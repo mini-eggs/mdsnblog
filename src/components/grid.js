@@ -8,7 +8,7 @@ const Item = props => {
   const image = 'https://' + item.image.fields.file.url
 
   return (
-    <Link to={'/' + item.slug}>
+    <Link className="ea--page--link" to={'/' + item.slug}>
       <div className="ea--grid--item">
         <Image speed={250} className="ea--grid--item--image" src={image} />
       </div>

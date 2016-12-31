@@ -39,6 +39,20 @@ class Navigation extends React.Component {
     return (
       <div className="ea--inline">
 
+        <div className="ea--mobile--menu--container">
+          <div className="ea--mobile--menu">
+            <div className="ea--mobile--menu--icon--container">
+              <div className="ea--inline ea--menu--icon--container" onClick={ () => { this.showNavigation() }}>
+                <div className="ea--menu--icon" />
+              </div>
+            </div>
+            
+            <div className="ea--brand--name ea--brand--name--mobile ea--text--right">
+                <Link to="/">MDSN</Link>
+            </div>
+          </div>
+        </div>
+
         <div id="ea--slide--out--menu--spoof--page" className="ea--slide--out--menu--spoof--page" onClick={ () => { this.closeNavigation() }} />
           <div id="ea--slide--out--navigation" className="ea--slide--out--menu--container ea--direction--rtl">
             <div className="ea--direction--ltr">
@@ -63,7 +77,7 @@ class Navigation extends React.Component {
           </div>
         </div>
 
-        <div className="ea-menu-container">
+        <div className="ea--menu--container">
           <div className="ea--inline ea--menu--icon--container" onClick={ () => { this.showNavigation() }}>
             <div className="ea--menu--icon" />
           </div>
