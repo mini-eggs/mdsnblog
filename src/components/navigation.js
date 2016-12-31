@@ -65,6 +65,9 @@ class Navigation extends React.Component {
             <div className="ea--slide--out--menu">
               <BlogDescription/>
               <BlogLinks onClick={ () => { this.closeNavigation() }} />
+              <div className="ea--website--copyright--author">
+                <span>© {new Date().getYear() - 100 + 2000} <a href="http://evansapps.com/">Evans Apps</a></span>
+              </div>
             </div>
           </div>
         </div>

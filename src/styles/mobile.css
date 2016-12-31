@@ -20,4 +20,10 @@
   .ea--page--type--header {
     font-size: 32px;
   }
+  .ea--page--inner {
+    margin: 10px auto 0;
+  }
+  .ea--slide--out--menu--container {
+    transition-duration: 0ms;
+  }
 }

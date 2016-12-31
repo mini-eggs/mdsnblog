@@ -1,5 +1,5 @@
 import React from 'react'
-import { browserHistory } from 'react-router'
+import { Link, browserHistory } from 'react-router'
 import { getItemByCategoryAndSlug } from '../scripts/contentful'
 import Image from './image'
 import Loader from './loader'
@@ -12,9 +12,11 @@ const PageItem = props => {
   console.log(page)
 
   return (
-    <div className="ea--page ea--page--max--width ">
-      <div className="ea--page--inner">
-        <h1 className="ea--page--header">{page.name}</h1>
+    <div className="ea--page">
+
+      <Link to={'/' + page.slug} className="ea--page--type--header">{page.name}</Link>
+
+      <div className="ea--page--inner ea--page--max--width ea--white--background">
         <Image zoom={true} src={image} />
         <article className="ea--page--content">
           {page.description}
