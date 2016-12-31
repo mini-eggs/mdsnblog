@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router'
 import BlogDescription from './blogDescription'
 import BlogLinks from './blogLinks'
+import SocialIcons from './socialIcons'
 
 class Navigation extends React.Component {
 
@@ -64,15 +65,6 @@ class Navigation extends React.Component {
             <div className="ea--slide--out--menu">
               <BlogDescription/>
               <BlogLinks/>
-              {
-                Array(99).fill(1).map( (e,i) => {
-                  return (
-                    <div key={i}>
-                      <Link to="/" onClick={ () => { this.closeNavigation() }}>home</Link>
-                    </div>
-                  )
-                })
-              }
             </div>
           </div>
         </div>
@@ -88,7 +80,7 @@ class Navigation extends React.Component {
           </div>
           <div className="ea--menu--social--icons">
             <div className="ea--social--icon--container">
-              icon
+              <SocialIcons/>
             </div>
           </div>
         </div>

@@ -16,6 +16,8 @@ a:focus {
 }
 article {
   white-space: pre-wrap;
+  font-size:18px;
+  line-height:22px;
 }
 .ea--page--wrap {
   height:100vh;
@@ -296,7 +298,7 @@ article {
   }
 }
 .ea--grid--container {
-  margin: 5px;
+  border: 5px solid transparent;
 }
 .ea--full--width {
   width:100%;
@@ -321,13 +323,14 @@ article {
   min-height: 100vh;
 }
 .ea--page--inner {
-  padding: 25px;
+  padding: 25px 25px 100px 25px;
 }
 .ea--page--max--width {
   max-width: 800px;
 }
 .ea--page--header {
   margin-bottom: 25px;
+  font-size:32px;
 }
 .ea--page--content {
   margin-top:25px;
@@ -359,6 +362,79 @@ article {
 .ea--page--link {
   display: block;
 }
+.ea--menu--button--link {
+  display: block;
+  font-size: 22px;
+  padding: 15px 25px;
+  background-color: rgba(255,255,255,0.1);
+  position: relative;
+  margin-bottom:1px;
+}
+.ea--menu--button--link:hover {
+  background-color: rgba(255,255,255,0.2);
+}
+.ea--menu--button--link::after,
+.ea--menu--button--link::before {
+  content: ' ';
+  background-color: #fff;
+  height: 2px;
+  width: 15px;
+  display: block;
+  position: absolute;
+  right: 25px;
+  top:50%;
+}
+.ea--menu--button--link::before {
+  -webkit-transform: rotate(45deg);
+  -moz-transform:    rotate(45deg);
+  -ms-transform:     rotate(45deg);
+  -o-transform:      rotate(45deg);
+  transform:         rotate(45deg);
+  margin-top:-5px;
+}
+.ea--menu--button--link::after {
+  -webkit-transform: rotate(-45deg);
+  -moz-transform:    rotate(-45deg);
+  -ms-transform:     rotate(-45deg);
+  -o-transform:      rotate(-45deg);
+  transform:         rotate(-45deg);
+  margin-top:5px;
+}
+.ej--website--data--container {
+  margin-bottom:50px;
+}
+.ej--website--data { 
+}
+.ej--website--data--title {
+  margin-bottom:25px;
+  font-size:32px;
+}
+.ej--website--data--description {
+  font-size:24px;
+  white-space: pre-wrap;
+}
+.ea--social--icon--link {
+  margin-top: 10px;
+  display: block;
+}
+.ea--social--icon--link--image--container {
+  width:25px;
+  margin: 0 auto;
+}
+.ea--mobile--top--fix {
+  /*margin-top:-5px;*/
+}
+
+
+
+
+
+
+
+
+
+
+
 
 
 

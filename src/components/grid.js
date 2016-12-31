@@ -19,7 +19,6 @@ const Item = props => {
 const Grid = props => {
 
   const items = props.items
-
   const helpers = Array(5).fill().map( (item, index) => index + 1 )
 
   const sizesClasses = [

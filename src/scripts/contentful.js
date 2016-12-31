@@ -13,12 +13,6 @@ const getItemByCategoryPaginated = async props => {
         items.push(item.fields)
       }
     })
-    // items = items.concat(items).concat(items).concat(items).concat(items)
-    // items = items.concat(items).concat(items).concat(items).concat(items)
-    // items = items.concat(items).concat(items).concat(items).concat(items)
-    // items = items.concat(items).concat(items).concat(items).concat(items)
-    // items = items.concat(items).concat(items).concat(items).concat(items)
-    // items = items.concat(items).concat(items).concat(items).concat(items)
     items = items.slice( props.page * props.size, (props.page + 1) * props.size )
     if(items.length > 0) {
       resolve(items)

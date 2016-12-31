@@ -1,11 +1,11 @@
 ::-webkit-scrollbar {
-    background-color: #e4e4e4;
+    background-color: rgba(0, 0, 0, 0.1);
 }
 ::-webkit-scrollbar-thumb {
     background-color: #000;
 }
 .ea--slide--out--menu--container::-webkit-scrollbar {
-    background-color: #000;
+    background-color: rgba(255, 255, 255, 0.1);
 }
 .ea--slide--out--menu--container::-webkit-scrollbar-thumb {
     background-color: #fff;

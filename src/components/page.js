@@ -12,7 +12,7 @@ const PageItem = props => {
   console.log(page)
 
   return (
-    <div className="ea--page ea--page--max--width">
+    <div className="ea--page ea--page--max--width ">
       <div className="ea--page--inner">
         <h1 className="ea--page--header">{page.name}</h1>
         <Image zoom={true} src={image} />
@@ -51,13 +51,15 @@ class Page extends React.Component {
 
   render() {
     return (
-      <div className="ea--height--full">
-        {
-          !this.state.page ?
-            <Loader/>
-            :
-            <PageItem page={this.state.page} />
-        }
+      <div className="ea--height--full ea--mobile--top--fix ">
+        <div className="ea--height--full ea--scroll-vertical">
+          {
+            !this.state.page ?
+              <Loader/>
+              :
+              <PageItem page={this.state.page} />
+          }
+        </div>
       </div>
     )
   }

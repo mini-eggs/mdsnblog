@@ -8,7 +8,13 @@
   .ea--fill--calc--100 {
     width:100%;
   }
-  .ea--page--home {
-    margin-top:83px;
+  .ea--mobile--top--fix {
+    margin-top:0px;
+    padding-top: 83px;
+    height: -webkit-calc(100% - 83px);
+    height: expression(100% - 83px);
+    height: -moz-calc(100% - 83px);
+    height: -o-calc(100% - 83px);
+    height: calc(100% - 83px);
   }
 }

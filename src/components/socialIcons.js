@@ -1,13 +1,16 @@
 import React from 'react'
 import { getItemByCategory } from '../scripts/contentful'
+import Image from './image'
 
 const CustomSocialLink = props => {
   const item = props.item
-  // const image = 'https://' + item.image.fields.file.url
+  const image = 'https://' + item.image.fields.file.url
 
   return (
-    <a href={item.link} className="ea--menu--button--link">
-      {item.name}
+    <a href={item.link} className="ea--social--icon--link">
+      <div className="ea--social--icon--link--image--container">
+        <Image src={image} />
+      </div>
     </a>
   )
 }

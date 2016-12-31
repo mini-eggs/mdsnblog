@@ -47,8 +47,8 @@ class Home extends React.Component {
   }
 
   getItemsComplete() {
+    // this throws an error
     const el = document.getElementById('ea--page--home--scroll')
-    // if(!el.innerHeight) {}
     if(!(el.scrollHeight > window.innerHeight)) {
       this.getItems()
     }
@@ -57,9 +57,11 @@ class Home extends React.Component {
   render() {
     return (
       <div id="ea--page--home--scroll" className="ea--page--home ea--height--full ea--scroll-vertical">
-        {
-          this.state.items.length > 0 ? <Grid items={this.state.items} /> : <Loader/>
-        }
+        <div className="ea--mobile--top--fix ea--height--full">
+          {
+            this.state.items.length > 0 ? <Grid items={this.state.items} /> : <Loader/>
+          }
+        </div>
       </div>
     )
   }
