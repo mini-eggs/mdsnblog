@@ -39,6 +39,20 @@ const getItemByCategoryAndSlug = async props => {
 }
 export {getItemByCategoryAndSlug}
 
+const getItemBySlug = async props => {
+  return new Promise( async (resolve, reject) => {
+    const entries = await client.getEntries()
+    entries.toPlainObject().items.forEach( item => {
+      const slug = item.fields.slug
+      if(slug === props.slug) {
+        resolve(item.fields)
+      }
+    })
+    reject()
+  })
+}
+export {getItemBySlug}
+
 const getItemByCategory = async props => {
   let items = []
   return new Promise( async (resolve, reject) => {

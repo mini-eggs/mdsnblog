@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link, browserHistory } from 'react-router'
-import { getItemByCategoryAndSlug } from '../scripts/contentful'
+import { getItemBySlug } from '../scripts/contentful'
 import Image from './image'
 import Loader from './loader'
 
@@ -42,7 +42,7 @@ class Page extends React.Component {
 
   async getPage() {
     try {
-      const page = await getItemByCategoryAndSlug({ category: 'blogPost', slug: this.state.slug })
+      const page = await getItemBySlug({ slug: this.state.slug })
       this.setState({ page: page })
     }
     catch(err) {

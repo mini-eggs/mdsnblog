@@ -1,4 +1,4 @@
-@media(max-width:748px) {
+@media(max-width:748px), (max-height:500px) {
   .ea--menu--container {
     display: none;
   }
